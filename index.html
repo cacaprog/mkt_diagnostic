@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Transformation Assessment</title>
+</head>
+<body>
+    <h1>Digital Transformation Assessment</h1>
+    <form action="/submit" method="post">
+        {% for i, question in enumerate(questions) %}
+            <div>
+                <h3>{{ question.question }}</h3>
+                {% for option in question.options %}
+                    <input type="radio" name="question_{{ i }}" value="{{ option.score }}" required> {{ option.text }}<br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
