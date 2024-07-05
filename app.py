@@ -3,6 +3,9 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+# Add enumerate to the Jinja2 environment globals
+app.jinja_env.globals.update(enumerate=enumerate)
+
 questions = [
     {
         "question": "Do you have a clear digital transformation strategy documented?",
