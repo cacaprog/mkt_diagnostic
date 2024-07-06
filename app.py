@@ -5,6 +5,7 @@ from datetime import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+
 app = Flask(__name__)
 
 # Add enumerate to the Jinja2 environment globals
@@ -56,13 +57,13 @@ try:
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     credentials_json = os.environ.get('GOOGLE_SHEETS_CREDENTIALS')
     if not credentials_json:
-        raise ValueError("GOOGLE_SHEETS_CREDENTIALS environment variable is not set.")        
+        raise ValueError("GOOGLE_SHEETS_CREDENTIALS environment variable is not set.")
     credentials_dict = json.loads(credentials_json)
     creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
     client = gspread.authorize(creds)
-
     # Open the Google Sheet by name
-    sheet = client.open("Marketing Diagnostic App").sheet1
+    sheet = client.open("Your Google Sheet Name").sheet1
+    print("Google Sheets client initialized successfully.")
 except Exception as e:
     print(f"Error initializing Google Sheets client: {e}")
     raise
