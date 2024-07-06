@@ -1,10 +1,15 @@
 import os
 from flask import Flask, render_template, request
+from datetime import datetime
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 
 app = Flask(__name__)
 
 # Add enumerate to the Jinja2 environment globals
 app.jinja_env.globals.update(enumerate=enumerate)
+
 
 questions = [
     {
@@ -47,15 +52,23 @@ recommendations = [
 ]
 
 
-def save_assessment(score, recommendation):
-    with open('assessments.txt', 'a') as file:
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        file.write(f'{timestamp}, Score: {score}, Recommendation: {recommendation}\n')
+# Google Sheets setup
+scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name("path/to/credentials.json", scope)
+client = gspread.authorize(creds)
+
+
+# Open the Google Sheet by name
+sheet = client.open("Your Google Sheet Name").sheet1
+
+def save_to_google_sheets(data):
+    sheet.append_row(data)
 
 
 @app.route('/')
 def index():
     return render_template('index.html', questions=questions)
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -65,16 +78,31 @@ def submit():
         score += int(answer)
 
     # Initialize recommendation and follow_up with default values
-    recommendation = "No recommendation found."
     follow_up = "No follow-up actions available."
-
+    recommendation = "No recommendation found."
+    
     for rec in recommendations:
         if rec['min_score'] <= score <= rec['max_score']:
             recommendation = rec['recommendation']
             follow_up = rec['follow_up']
             break
+    
+    # Collect additional information
+    name = request.form.get('name')
+    email = request.form.get('email')
+    company_name = request.form.get('company_name')
+    industry = request.form.get('industry')
+    employees = request.form.get('employees')
+    role = request.form.get('role')
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    # Save the assessment information to Google Sheets
+    data = [timestamp, name, email, company_name, industry, employees, role, score, recommendation, follow_up]
+    save_to_google_sheets(data)
+    
+    
+    return render_template('result.html', score=score, recommendation=recommendation)
 
-    return render_template('result.html', score=score, recommendation=recommendation, follow_up=follow_up)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
