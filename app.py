@@ -51,26 +51,33 @@ recommendations = [
     # Add other score ranges similarly
 ]
 
-
 # Google Sheets setup
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-credentials_json = os.environ.get('GOOGLE_SHEETS_CREDENTIALS')
-credentials_dict = json.loads(credentials_json)
-creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
-client = gspread.authorize(creds)
+try:
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    credentials_json = os.environ.get('GOOGLE_SHEETS_CREDENTIALS')
+    if not credentials_json:
+        raise ValueError("GOOGLE_SHEETS_CREDENTIALS environment variable is not set.")        
+    credentials_dict = json.loads(credentials_json)
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
+    client = gspread.authorize(creds)
 
-
-# Open the Google Sheet by name
-sheet = client.open("Marketing Diagnostic App").sheet1
+    # Open the Google Sheet by name
+    sheet = client.open("Marketing Diagnostic App").sheet1
+except Exception as e:
+    print(f"Error initializing Google Sheets client: {e}")
+    raise
 
 def save_to_google_sheets(data):
-    sheet.append_row(data)
-
+    try:
+        sheet.append_row(data)
+        print("Data saved to Google Sheets.")
+    except Exception as e:
+        print(f"Error saving data to Google Sheets: {e}")
+        raise
 
 @app.route('/')
 def index():
     return render_template('index.html', questions=questions)
-
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -80,15 +87,15 @@ def submit():
         score += int(answer)
 
     # Initialize recommendation and follow_up with default values
-    follow_up = "No follow-up actions available."
     recommendation = "No recommendation found."
-    
+    follow_up = "No follow-up actions available."
+
     for rec in recommendations:
         if rec['min_score'] <= score <= rec['max_score']:
             recommendation = rec['recommendation']
             follow_up = rec['follow_up']
             break
-    
+
     # Collect additional information
     name = request.form.get('name')
     email = request.form.get('email')
@@ -97,14 +104,12 @@ def submit():
     employees = request.form.get('employees')
     role = request.form.get('role')
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    
+
     # Save the assessment information to Google Sheets
     data = [timestamp, name, email, company_name, industry, employees, role, score, recommendation, follow_up]
     save_to_google_sheets(data)
-    
 
     return render_template('result.html', score=score, recommendation=recommendation)
-
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
