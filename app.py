@@ -1,9 +1,9 @@
 import os
+import json
 from flask import Flask, render_template, request
 from datetime import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-
 
 app = Flask(__name__)
 
@@ -54,12 +54,14 @@ recommendations = [
 
 # Google Sheets setup
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("path/to/credentials.json", scope)
+credentials_json = os.environ.get('GOOGLE_SHEETS_CREDENTIALS')
+credentials_dict = json.loads(credentials_json)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
 client = gspread.authorize(creds)
 
 
 # Open the Google Sheet by name
-sheet = client.open("Your Google Sheet Name").sheet1
+sheet = client.open("Marketing Diagnostic App").sheet1
 
 def save_to_google_sheets(data):
     sheet.append_row(data)
@@ -100,7 +102,7 @@ def submit():
     data = [timestamp, name, email, company_name, industry, employees, role, score, recommendation, follow_up]
     save_to_google_sheets(data)
     
-    
+
     return render_template('result.html', score=score, recommendation=recommendation)
 
 
