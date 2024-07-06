@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Assessment Result</title>
+    <title>Resultado</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
@@ -16,26 +18,34 @@
             margin: 50px auto;
             padding: 20px;
             background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
         h1, h2 {
             text-align: center;
             font-size: 24px;
             margin-bottom: 20px;
+            color: #333;
         }
         p {
             font-size: 16px;
             line-height: 1.5;
             margin-bottom: 20px;
+            color: #666;
         }
         a {
+            display: inline-block;
             color: #007BFF;
             text-decoration: none;
             font-size: 16px;
+            border: 1px solid #007BFF;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         a:hover {
-            text-decoration: underline;
+            background-color: #007BFF;
+            color: white;
         }
         @media (max-width: 600px) {
             .container {
@@ -46,10 +56,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Your Score: {{ score }}</h1>
+        <h1>Seu Score: {{ score }}</h1>
         <p>{{ recommendation }}</p>
-        <h2>Book a Meeting</h2>
-        <p>To discuss your digital transformation strategy, <a href="your-meeting-link">book a meeting here</a>.</p>
+        <h2>Fale com um Consultor</h2>
+        <p>E obtenha mais informações de como transformar a estratégia de marketing digital da sua empresa, <a href="https://calendar.app.google/FFGNURK9Ei36bWpT8">agende aqui</a>.</p>
     </div>
 </body>
 </html>

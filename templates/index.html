@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Digital Transformation Assessment</title>
+    <title>Diagnóstico de Marketing Digital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
@@ -16,28 +18,39 @@
             margin: 50px auto;
             padding: 20px;
             background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
         h1 {
             text-align: center;
             font-size: 24px;
             margin-bottom: 20px;
+            color: #333;
         }
-        .question, .personal-info {
+        .section {
             margin-bottom: 20px;
         }
-        .question h3, .personal-info h3 {
+        .section h3 {
             margin-bottom: 10px;
             font-size: 18px;
+            color: #007BFF;
         }
-        .question input, .personal-info input, .personal-info select {
+        .section input, .section select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-top: 5px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .question-options {
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .question-options input {
+            margin-right: 10px;
         }
         button {
             display: block;
@@ -49,9 +62,24 @@
             cursor: pointer;
             font-size: 18px;
             border-radius: 4px;
+            transition: background-color 0.3s ease;
         }
         button:hover {
             background-color: #0056b3;
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 20px;
+            width: 0%;
+            background-color: #007BFF;
+            border-radius: 4px;
+            transition: width 0.3s ease;
         }
         @media (max-width: 600px) {
             .container {
@@ -59,31 +87,65 @@
             }
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            const progressBar = document.querySelector('.progress-bar');
+            const sections = document.querySelectorAll('.section');
+            let currentSection = 0;
+
+            function updateProgressBar() {
+                const progress = ((currentSection + 1) / sections.length) * 100;
+                progressBar.style.width = progress + '%';
+            }
+
+            form.addEventListener('change', function (event) {
+                if (event.target.closest('.section') && event.target.type === 'radio') {
+                    if (currentSection < sections.length - 1) {
+                        currentSection++;
+                        sections[currentSection - 1].style.display = 'none';
+                        sections[currentSection].style.display = 'block';
+                    }
+                    updateProgressBar();
+                }
+            });
+
+            updateProgressBar();
+        });
+    </script>
 </head>
 <body>
     <div class="container">
-        <h1>Digital Transformation Assessment</h1>
+        <h1>Diagnóstico de Marketing Digital</h1>
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
         <form action="/submit" method="post">
-            <div class="personal-info">
-                <h3>Personal Information</h3>
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="text" name="company_name" placeholder="Company Name" required>
-                <input type="text" name="industry" placeholder="Industry" required>
-                <input type="number" name="employees" placeholder="Number of Employees" required>
-                <input type="text" name="role" placeholder="Role" required>
+            <div class="section personal-info">
+                <h3>Informações Pessoais</h3>
+                <input type="text" name="name" placeholder="Nome Completo" required>
+                <input type="text" name="role" placeholder="Cargo" required>
+                <input type="email" name="email" placeholder="Email Corporativo" required>
+                <input type="text" name="company_name" placeholder="Empresa" required>
+                <input type="text" name="industry" placeholder="Segmento" required>
+                <input type="number" name="employees" placeholder="Número de Funcionários" required>
             </div>
-            {% for i, question in enumerate(questions) %}
-                <div class="question">
-                    <h3>{{ question.question }}</h3>
-                    {% for option in question.options %}
-                        <div>
-                            <input type="radio" name="question_{{ i }}" value="{{ option.score }}" required> {{ option.text }}
+            <div class="section business-info">
+                <h3>Informações de Negócio</h3>
+                {% for i, question in enumerate(questions) %}
+                    <div class="question">
+                        <h3>{{ question.question }}</h3>
+                        <div class="question-options">
+                            {% for option in question.options %}
+                                <label>
+                                    <input type="radio" name="question_{{ i }}" value="{{ option.score }}" required> {{ option.text }}
+                                </label><br>
+                            {% endfor %}
                         </div>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-            <button type="submit">Submit</button>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit">Acessar Diagnóstico</button>
         </form>
     </div>
 </body>

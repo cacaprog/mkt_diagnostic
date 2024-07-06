@@ -11,45 +11,150 @@ app = Flask(__name__)
 # Add enumerate to the Jinja2 environment globals
 app.jinja_env.globals.update(enumerate=enumerate)
 
-
+# Questions
 questions = [
     {
-        "question": "Do you have a clear digital transformation strategy documented?",
+        "question": "Com que frequência você realiza pesquisas de mercado?",
         "options": [
-            {"text": "Yes, fully documented and communicated", "score": 5},
-            {"text": "Partially documented", "score": 3},
-            {"text": "No, not documented", "score": 0}
+            {"text": "Trimestralmente", "score": 5},
+            {"text": "Semestralmente", "score": 3},
+            {"text": "Anualmente", "score": 2},
+            {"text": "Raramente/Nunca", "score": 0}
         ]
     },
-    
     {
-        "question": "How committed is your leadership team to driving digital transformation?",
+        "question": "Você tem um entendimento claro do seu público-alvo?",
         "options": [
-            {"text": "Highly committed", "score": 5},
-            {"text": "Moderately committed", "score": 3},
-            {"text": "Slightly committed", "score": 2},
-            {"text": "Not committed", "score": 0}
+            {"text": "Muito claro", "score": 5},
+            {"text": "Razoavelmente claro", "score": 3},
+            {"text": "Pouco claro", "score": 2},
+            {"text": "Nada claro", "score": 0}
         ]
     },
-
     {
-        "question": "Do you have a dedicated team or leader responsible for digital transformation?",
+        "question": "Quão confiante você está em relação ao seu product/market fit?",
         "options": [
-            {"text": "Yes, a dedicated team/leader", "score": 50},
-            {"text": "Partially, shared responsibilities", "score": 10},
-            {"text": "No, no dedicated team/leader", "score": 25}
+            {"text": "Muito confiante", "score": 5},
+            {"text": "Moderadamente confiante", "score": 3},
+            {"text": "Pouco confiante", "score": 2},
+            {"text": "Nada confiante", "score": 0}
         ]
     },
-    
-    # Add the rest of the questions similarly
+    {
+        "question": "Você tem uma proposta de valor única que diferencia seu produto/serviço?",
+        "options": [
+            {"text": "Sim", "score": 5},
+            {"text": "Não", "score": 0}
+        ]
+    },
+    {
+        "question": "Quão definido está o seu processo de vendas?",
+        "options": [
+            {"text": "Muito definido", "score": 5},
+            {"text": "Moderadamente definido", "score": 3},
+            {"text": "Pouco definido", "score": 2},
+            {"text": "Nada definido", "score": 0}
+        ]
+    },
+    {
+        "question": "Quão eficazes são suas estratégias de vendas na conversão de leads?",
+        "options": [
+            {"text": "Muito eficazes", "score": 5},
+            {"text": "Moderadamente eficazes", "score": 3},
+            {"text": "Pouco eficazes", "score": 2},
+            {"text": "Nada eficazes", "score": 0}
+        ]
+    },
+    {
+        "question": "Quão diversificados são os seus canais de marketing?",
+        "options": [
+            {"text": "Muito diversificados", "score": 5},
+            {"text": "Moderadamente diversificados", "score": 3},
+            {"text": "Pouco diversificados", "score": 2},
+            {"text": "Nada diversificados", "score": 0}
+        ]
+    },
+    {
+        "question": "Você tem uma estratégia documentada para cada canal de marketing?",
+        "options": [
+            {"text": "Sim", "score": 5},
+            {"text": "Não", "score": 0}
+        ]
+    },
+    {
+        "question": "Com que regularidade você analisa os seus KPIs de marketing?",
+        "options": [
+            {"text": "Semanalmente", "score": 5},
+            {"text": "Mensalmente", "score": 3},
+            {"text": "Trimestralmente", "score": 2},
+            {"text": "Raramente/Nunca", "score": 0}
+        ]
+    },
+    {
+        "question": "Você usa analytics para orientar suas decisões de marketing?",
+        "options": [
+            {"text": "Sim, sempre", "score": 5},
+            {"text": "Ocasionalmente", "score": 3},
+            {"text": "Raramente", "score": 2},
+            {"text": "Nunca", "score": 0}
+        ]
+    },
+    {
+        "question": "Você tem um sistema centralizado para coletar e analisar dados de todos os canais de marketing?",
+        "options": [
+            {"text": "Sim", "score": 5},
+            {"text": "Parcialmente", "score": 3},
+            {"text": "Não", "score": 0}
+        ]
+    },
+    {
+        "question": "Quão confiante você está na precisão e integridade dos seus dados de marketing?",
+        "options": [
+            {"text": "Muito confiante", "score": 5},
+            {"text": "Moderadamente confiante", "score": 3},
+            {"text": "Pouco confiante", "score": 2},
+            {"text": "Nada confiante", "score": 0}
+        ]
+    },
+    {
+        "question": "Você usa regularmente insights baseados em dados para otimizar suas campanhas de marketing?",
+        "options": [
+            {"text": "Sim, sempre", "score": 5},
+            {"text": "Ocasionalmente", "score": 3},
+            {"text": "Raramente", "score": 2},
+            {"text": "Nunca", "score": 0}
+        ]
+    }
 ]
 
+
+
+# Recommendations
 recommendations = [
-    {"min_score": 55, "max_score": 60, "recommendation": "Your digital transformation efforts are excellent. Continue to innovate and refine your strategy to stay ahead.", "follow_up": "Offer advanced consulting services for AI integration, advanced analytics, and continuous improvement."},
-    {"min_score": 40, "max_score": 54, "recommendation": "You have a solid digital transformation foundation, but there are areas for improvement. Focus on integrating technologies and enhancing digital culture.", "follow_up": "Provide a tailored plan to optimize technology integration, process automation, and employee training."},
-    {"min_score": 25, "max_score": 39, "recommendation": "Your digital transformation efforts are in progress but need significant improvement. Prioritize strategy documentation, leadership commitment, and technology adoption.", "follow_up": "Provide a tailored plan to optimize technology integration, process automation, and employee training."},
-    {"min_score": 0, "max_score": 24, "recommendation": "You are at the early stages of digital transformation. Immediate action is needed to develop a strategy and start adopting digital technologies.", "follow_up":"Propose foundational digital transformation services, starting with strategic planning and basic technology implementation."},
-    # Add other score ranges similarly
+    {
+        "min_score": 60,
+        "max_score": 65,
+        "recommendation": "Sua estratégia de Go-To-Market é forte. Continue refinando sua abordagem e explore táticas avançadas para manter sua vantagem competitiva.",
+        "follow_up": "Implemente segmentação avançada de clientes, experimente campanhas inovadoras, colete e analise feedback de clientes, estabeleça parcerias e mantenha-se atualizado com as tendências emergentes."
+    },
+    {
+        "min_score": 45,
+        "max_score": 59,
+        "recommendation": "Você tem uma base sólida, mas várias áreas precisam de melhorias. Foque na diversificação dos canais, refinamento dos processos de vendas e utilização de análises.",
+        "follow_up": "Explore novos canais de marketing, invista em treinamento de vendas, integre ferramentas avançadas de análise, desenvolva uma estratégia de conteúdo abrangente e implemente automação de marketing."
+    },
+    {
+        "min_score": 25,
+        "max_score": 44,
+        "recommendation": "Sua estratégia de Go-To-Market precisa de melhorias significativas. Priorize a criação de uma estratégia documentada e revisões regulares de desempenho.",
+        "follow_up": "Crie um documento detalhado de estratégia, conduza auditorias regulares, defina métricas de desempenho claras, desenvolva um calendário de conteúdo e construa personas detalhadas de clientes."
+    },
+    {
+        "min_score": 0,
+        "max_score": 24,
+        "recommendation": "Sua estratégia de Go-To-Market está no início ou inexistente. Ação imediata é necessária para estabelecer uma estratégia robusta.",
+        "follow_up": "Crie uma estratégia fundamental, inscreva-se em treinamentos de marketing e vendas, invista em ferramentas essenciais de marketing, lance campanhas iniciais e considere contratar um consultor ou agência para orientação."
+    }
 ]
 
 # Google Sheets setup
