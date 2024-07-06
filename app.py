@@ -46,6 +46,13 @@ recommendations = [
     # Add other score ranges similarly
 ]
 
+
+def save_assessment(score, recommendation):
+    with open('assessments.txt', 'a') as file:
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        file.write(f'{timestamp}, Score: {score}, Recommendation: {recommendation}\n')
+
+
 @app.route('/')
 def index():
     return render_template('index.html', questions=questions)
