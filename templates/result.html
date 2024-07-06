@@ -3,11 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Assessment Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Your Score: {{ score }}</h1>
-    <p>{{ recommendation }}</p>
-    <h2>Book a Meeting</h2>
-    <p>To discuss your digital transformation strategy, <a href="your-meeting-link">book a meeting here</a>.</p>
+    <div class="container">
+        <h1>Your Score: {{ score }}</h1>
+        <p>{{ recommendation }}</p>
+        <h2>Book a Meeting</h2>
+        <p>To discuss your digital transformation strategy, <a href="your-meeting-link">book a meeting here</a>.</p>
+    </div>
 </body>
 </html>
+

@@ -3,19 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Digital Transformation Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+        }
+        .question input {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Digital Transformation Assessment</h1>
-    <form action="/submit" method="post">
-        {% for i, question in enumerate(questions) %}
-            <div>
-                <h3>{{ question.question }}</h3>
-                {% for option in question.options %}
-                    <input type="radio" name="question_{{ i }}" value="{{ option.score }}" required> {{ option.text }}<br>
-                {% endfor %}
-            </div>
-        {% endfor %}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+        <h1>Digital Transformation Assessment</h1>
+        <form action="/submit" method="post">
+            {% for i, question in enumerate(questions) %}
+                <div class="question">
+                    <h3>{{ question.question }}</h3>
+                    {% for option in question.options %}
+                        <div>
+                            <input type="radio" name="question_{{ i }}" value="{{ option.score }}" required> {{ option.text }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
