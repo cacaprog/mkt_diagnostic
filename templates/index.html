@@ -55,15 +55,14 @@
         .question-options {
             margin-top: 10px;
         }
-        .question-options input {
-            margin-right: 10px;
-            vertical-align: middle;
-        }
         .question-options label {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
             font-size: 16px;
+        }
+        .question-options input {
+            margin-right: 10px;
             vertical-align: middle;
         }
         button {
@@ -106,8 +105,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.querySelector('form');
             const progressBar = document.querySelector('.progress-bar');
-            const questions = document.querySelectorAll('.question input[type="radio"]');
-            let totalQuestions = questions.length;
+            const questions = document.querySelectorAll('.question');
+            const totalQuestions = questions.length;
             let answeredQuestions = 0;
 
             function updateProgressBar() {
@@ -117,7 +116,9 @@
 
             form.addEventListener('change', function (event) {
                 if (event.target.type === 'radio') {
-                    answeredQuestions = Array.from(questions).filter(input => input.checked).length;
+                    answeredQuestions = Array.from(questions).filter(question => {
+                        return Array.from(question.querySelectorAll('input[type="radio"]')).some(input => input.checked);
+                    }).length;
                     updateProgressBar();
                 }
             });
