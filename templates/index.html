@@ -15,7 +15,7 @@
         }
         .container {
             max-width: 600px;
-            margin: 50px auto;
+            margin: 70px auto 50px auto;
             padding: 20px;
             background: white;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -60,7 +60,8 @@
             vertical-align: middle;
         }
         .question-options label {
-            display: inline-block;
+            display: flex;
+            align-items: center;
             margin-bottom: 10px;
             font-size: 16px;
             vertical-align: middle;
@@ -81,11 +82,12 @@
             background-color: #0056b3;
         }
         .progress-bar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             background-color: #f4f4f4;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            overflow: hidden;
+            z-index: 1000;
         }
         .progress-bar {
             height: 20px;
@@ -104,7 +106,6 @@
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.querySelector('form');
             const progressBar = document.querySelector('.progress-bar');
-            const sections = document.querySelectorAll('.section');
             const questions = document.querySelectorAll('.question input[type="radio"]');
             let totalQuestions = questions.length;
             let answeredQuestions = 0;
@@ -126,11 +127,11 @@
     </script>
 </head>
 <body>
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
     <div class="container">
         <h1>Diagnóstico de Marketing Digital</h1>
-        <div class="progress-bar-container">
-            <div class="progress-bar"></div>
-        </div>
         <form action="/submit" method="post">
             <div class="section personal-info">
                 <h3>Informações Pessoais</h3>
@@ -150,7 +151,7 @@
                             {% for option in question.options %}
                                 <label>
                                     <input type="radio" name="question_{{ i }}" value="{{ option.score }}" required> {{ option.text }}
-                                </label><br>
+                                </label>
                             {% endfor %}
                         </div>
                     </div>
