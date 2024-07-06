@@ -62,7 +62,7 @@ try:
     creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
     client = gspread.authorize(creds)
     # Open the Google Sheet by name
-    sheet = client.open("Your Google Sheet Name").sheet1
+    sheet = client.open("Marketing Diagnostic App").sheet1
     print("Google Sheets client initialized successfully.")
 except Exception as e:
     print(f"Error initializing Google Sheets client: {e}")
