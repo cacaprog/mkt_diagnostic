@@ -14,114 +14,87 @@ app.jinja_env.globals.update(enumerate=enumerate)
 # Questions
 questions = [
     {
-        "question": "Com que frequência você realiza pesquisas de mercado?",
+        "question": "Você têm um entendimento claro do seu público-alvo?",
         "options": [
-            {"text": "Trimestralmente", "score": 5},
-            {"text": "Semestralmente", "score": 3},
-            {"text": "Anualmente", "score": 2},
-            {"text": "Raramente/Nunca", "score": 0}
-        ]
-    },
-    {
-        "question": "Você tem um entendimento claro do seu público-alvo?",
-        "options": [
-            {"text": "Muito claro", "score": 5},
-            {"text": "Razoavelmente claro", "score": 3},
-            {"text": "Pouco claro", "score": 2},
+            {"text": "Muito claro", "score": 10},  # 5 * 2
+            {"text": "Razoavelmente claro", "score": 6},  # 3 * 2
+            {"text": "Pouco claro", "score": 4},  # 2 * 2
             {"text": "Nada claro", "score": 0}
-        ]
-    },
-    {
-        "question": "Quão confiante você está em relação ao seu product/market fit?",
-        "options": [
-            {"text": "Muito confiante", "score": 5},
-            {"text": "Moderadamente confiante", "score": 3},
-            {"text": "Pouco confiante", "score": 2},
-            {"text": "Nada confiante", "score": 0}
         ]
     },
     {
         "question": "Você tem uma proposta de valor única que diferencia seu produto/serviço?",
         "options": [
-            {"text": "Sim", "score": 5},
+            {"text": "Sim", "score": 10},  # 5 * 2
             {"text": "Não", "score": 0}
         ]
     },
     {
-        "question": "Quão definido está o seu processo de vendas?",
+        "question": "Você têm um processo de vendas definido?",
         "options": [
-            {"text": "Muito definido", "score": 5},
-            {"text": "Moderadamente definido", "score": 3},
-            {"text": "Pouco definido", "score": 2},
+            {"text": "Muito definido", "score": 10},  # 5 * 2
+            {"text": "Moderadamente definido", "score": 6},  # 3 * 2
+            {"text": "Pouco definido", "score": 4},  # 2 * 2
             {"text": "Nada definido", "score": 0}
         ]
     },
     {
         "question": "Quão eficazes são suas estratégias de vendas na conversão de leads?",
         "options": [
-            {"text": "Muito eficazes", "score": 5},
-            {"text": "Moderadamente eficazes", "score": 3},
-            {"text": "Pouco eficazes", "score": 2},
+            {"text": "Muito eficazes", "score": 10},  # 5 * 2
+            {"text": "Moderadamente eficazes", "score": 6},  # 3 * 2
+            {"text": "Pouco eficazes", "score": 4},  # 2 * 2
             {"text": "Nada eficazes", "score": 0}
         ]
     },
     {
-        "question": "Quão diversificados são os seus canais de marketing?",
+        "question": "Quão diversificados são os seus canais de marketing digital?",
         "options": [
-            {"text": "Muito diversificados", "score": 5},
-            {"text": "Moderadamente diversificados", "score": 3},
-            {"text": "Pouco diversificados", "score": 2},
+            {"text": "Muito diversificados", "score": 10},  # 5 * 2
+            {"text": "Moderadamente diversificados", "score": 6},  # 3 * 2
+            {"text": "Pouco diversificados", "score": 4},  # 2 * 2
             {"text": "Nada diversificados", "score": 0}
         ]
     },
     {
-        "question": "Você tem uma estratégia documentada para cada canal de marketing?",
+        "question": "Você tem uma estratégia documentada para cada canal de marketing digital?",
         "options": [
-            {"text": "Sim", "score": 5},
+            {"text": "Sim", "score": 10},  # 5 * 2
             {"text": "Não", "score": 0}
         ]
     },
     {
-        "question": "Com que regularidade você analisa os seus KPIs de marketing?",
+        "question": "Você analisa os seus KPIs de marketing digital?",
         "options": [
-            {"text": "Semanalmente", "score": 5},
-            {"text": "Mensalmente", "score": 3},
-            {"text": "Trimestralmente", "score": 2},
+            {"text": "Semanalmente", "score": 10},  # 5 * 2
+            {"text": "Mensalmente", "score": 6},  # 3 * 2
+            {"text": "Trimestralmente", "score": 4},  # 2 * 2
             {"text": "Raramente/Nunca", "score": 0}
         ]
     },
     {
-        "question": "Você usa analytics para orientar suas decisões de marketing?",
+        "question": "Você tem um sistema centralizado para coletar e analisar dados de marketing?",
         "options": [
-            {"text": "Sim, sempre", "score": 5},
-            {"text": "Ocasionalmente", "score": 3},
-            {"text": "Raramente", "score": 2},
-            {"text": "Nunca", "score": 0}
-        ]
-    },
-    {
-        "question": "Você tem um sistema centralizado para coletar e analisar dados de todos os canais de marketing?",
-        "options": [
-            {"text": "Sim", "score": 5},
-            {"text": "Parcialmente", "score": 3},
+            {"text": "Sim", "score": 10},  # 5 * 2
+            {"text": "Parcialmente", "score": 6},  # 3 * 2
             {"text": "Não", "score": 0}
         ]
     },
     {
-        "question": "Quão confiante você está na precisão e integridade dos seus dados de marketing?",
+        "question": "Quão confiante você está na precisão e integridade dos seus dados?",
         "options": [
-            {"text": "Muito confiante", "score": 5},
-            {"text": "Moderadamente confiante", "score": 3},
-            {"text": "Pouco confiante", "score": 2},
+            {"text": "Muito confiante", "score": 10},  # 5 * 2
+            {"text": "Moderadamente confiante", "score": 6},  # 3 * 2
+            {"text": "Pouco confiante", "score": 4},  # 2 * 2
             {"text": "Nada confiante", "score": 0}
         ]
     },
     {
-        "question": "Você usa regularmente insights baseados em dados para otimizar suas campanhas de marketing?",
+        "question": "Você usa regularmente insights baseados em dados para otimizar suas campanhas de marketing digital?",
         "options": [
-            {"text": "Sim, sempre", "score": 5},
-            {"text": "Ocasionalmente", "score": 3},
-            {"text": "Raramente", "score": 2},
+            {"text": "Sim, sempre", "score": 10},  # 5 * 2
+            {"text": "Ocasionalmente", "score": 6},  # 3 * 2
+            {"text": "Raramente", "score": 4},  # 2 * 2
             {"text": "Nunca", "score": 0}
         ]
     }
@@ -132,27 +105,27 @@ questions = [
 # Recommendations
 recommendations = [
     {
-        "min_score": 60,
-        "max_score": 65,
-        "recommendation": "Sua estratégia de Go-To-Market é forte. Continue refinando sua abordagem e explore táticas avançadas para manter sua vantagem competitiva.",
+        "min_score": 75,
+        "max_score": 100,
+        "recommendation": "Sua estratégia de Marketing Digital é forte. Continue refinando sua abordagem e explore táticas avançadas para manter sua vantagem competitiva.",
         "follow_up": "Implemente segmentação avançada de clientes, experimente campanhas inovadoras, colete e analise feedback de clientes, estabeleça parcerias e mantenha-se atualizado com as tendências emergentes."
     },
     {
-        "min_score": 45,
-        "max_score": 59,
+        "min_score": 50,
+        "max_score": 74,
         "recommendation": "Você tem uma base sólida, mas várias áreas precisam de melhorias. Foque na diversificação dos canais, refinamento dos processos de vendas e utilização de análises.",
         "follow_up": "Explore novos canais de marketing, invista em treinamento de vendas, integre ferramentas avançadas de análise, desenvolva uma estratégia de conteúdo abrangente e implemente automação de marketing."
     },
     {
         "min_score": 25,
-        "max_score": 44,
-        "recommendation": "Sua estratégia de Go-To-Market precisa de melhorias significativas. Priorize a criação de uma estratégia documentada e revisões regulares de desempenho.",
+        "max_score": 49,
+        "recommendation": "Sua estratégia de Marketing Digital precisa de melhorias significativas. Priorize a criação de uma estratégia documentada e revisões regulares de desempenho.",
         "follow_up": "Crie um documento detalhado de estratégia, conduza auditorias regulares, defina métricas de desempenho claras, desenvolva um calendário de conteúdo e construa personas detalhadas de clientes."
     },
     {
         "min_score": 0,
         "max_score": 24,
-        "recommendation": "Sua estratégia de Go-To-Market está no início ou inexistente. Ação imediata é necessária para estabelecer uma estratégia robusta.",
+        "recommendation": "Sua estratégia de Marketing Digital está no início ou inexistente. Ação imediata é necessária para estabelecer uma estratégia robusta.",
         "follow_up": "Crie uma estratégia fundamental, inscreva-se em treinamentos de marketing e vendas, invista em ferramentas essenciais de marketing, lance campanhas iniciais e considere contratar um consultor ou agência para orientação."
     }
 ]
