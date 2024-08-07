@@ -33,7 +33,7 @@
         .section h3 {
             margin-bottom: 10px;
             font-size: 18px;
-            color: #007BFF;
+            color: #f25260;
         }
         .section input, .section select {
             width: 100%;
@@ -72,8 +72,8 @@
             background-color: #fff;
         }
         .question-options input[type="radio"]:checked {
-          border-color: #007BFF;
-          background-color: #007BFF;
+          border-color: #f25260;
+          background-color: #f25260;
           box-shadow: 0 0 0 2px #fff;
         }
         button {
@@ -102,7 +102,7 @@
         .progress-bar {
             height: 20px;
             width: 0%;
-            background-color: #007BFF;
+            background-color: #f25260;
             border-radius: 4px;
             transition: width 0.3s ease;
         }
@@ -110,6 +110,21 @@
             .container {
                 padding: 15px;
             }
+        }
+        .opt-in-label {
+            display: flex;
+            align-items: center;
+        }
+        .opt-in-label input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .opt-in-label a {
+            color: #f25260;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .opt-in-label a:hover {
+            text-decoration: underline;
         }
     </style>
     <script>
@@ -144,6 +159,7 @@
     </div>
     <div class="container">
         <h1>Diagnóstico de Marketing Digital</h1>
+        <h2>Preencha o formulário abaixo e receba um diagnóstico grátis de marketing digital</h2>
         <form action="/submit" method="post">
             <div class="section personal-info">
                 <h3>Informações Pessoais</h3>
@@ -169,9 +185,14 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="section opt-in">
+                <label class="opt-in-label">
+                    <input type="checkbox" name="opt_in"> Estou de acordo
+                    <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">Política de Privacidade</a>
+                </label>
+            </div>
             <button type="submit">Acessar Diagnóstico</button>
         </form>
     </div>
 </body>
 </html>
-
