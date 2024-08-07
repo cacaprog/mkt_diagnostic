@@ -59,15 +59,22 @@
         .question-options {
             margin-top: 10px;
             text-align: left;
+            display: flex;
+            flex-direction: column;
         }
-        .question-options label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        .question-options input {
+        .question-options input[type="radio"] {
+            width: 20px;
+            height: 20px;
             margin-right: 10px;
             vertical-align: middle;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .question-options input[type="radio"]:checked {
+          border-color: #007BFF;
+          background-color: #007BFF;
+          box-shadow: 0 0 0 2px #fff;
         }
         button {
             display: block;
