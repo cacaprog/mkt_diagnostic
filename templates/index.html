@@ -115,9 +115,35 @@
             display: flex;
             align-items: center;
             margin-top: 15px;
+            font-size: 16px;
         }
         .opt-in-label input[type="checkbox"] {
+            display: none;
+        }
+        .opt-in-label.checkmark {
+            position: relative;
+            top: 1px;
             margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        .opt-in-label input[type="checkbox"]:checked +.checkmark {
+            background-color: #007BFF;
+            border-color: #007BFF;
+        }
+        .opt-in-label input[type="checkbox"]:checked +.checkmark::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 2px;
         }
         .opt-in-label a {
             color: #5c5c5c;
@@ -188,10 +214,13 @@
             </div>
             <div class="section opt-in">
                 <label class="opt-in-label">
-                    <input type="checkbox" name="opt_in"> Estou de acordo
+                    <input type="checkbox" name="opt_in" id="opt_in">
+                    <span class="checkmark"></span>
+                    Estou de acordo com a política de privacidade
                     <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">Política de Privacidade</a>
                 </label>
             </div>
+                    
             <button type="submit">Acessar Diagnóstico</button>
         </form>
     </div>
