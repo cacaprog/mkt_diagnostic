@@ -116,27 +116,30 @@
             align-items: center;
             margin-top: 15px;
             font-size: 16px;
+            cursor: pointer;
         }
 
         .opt-in-label input[type="checkbox"] {
             display: none;
         }
 
-        .opt-in-label.custom-checkbox {
+        .custom-checkbox {
             margin-right: 10px;
             width: 20px;
             height: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
             background-color: #fff;
+            transition: background-color 0.2s ease;
+            position: relative;
         }
 
-        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox {
+        .opt-in-label input[type="checkbox"]:checked + .custom-checkbox {
             background-color: #007BFF;
             border-color: #007BFF;
         }
 
-        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox::after {
+        .opt-in-label input[type="checkbox"]:checked + .custom-checkbox::after {
             content: "";
             position: absolute;
             top: 50%;
@@ -148,13 +151,17 @@
             border-radius: 2px;
         }
 
-        .opt-in-label a {
-            color: #5c5c5c;
-            text-decoration: none;
-            margin-left: 10px;
+        .label-text {
+            font-size: 16px;
+            color: #333;
         }
 
-        .opt-in-label a:hover {
+        .label-text a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .label-text a:hover {
             text-decoration: underline;
         }
     </style>
@@ -194,18 +201,24 @@
         <form action="/submit" method="post">
             <div class="section personal-info">
                 <h3>Informações Pessoais</h3>
-                <input type="text" name="name" placeholder="Nome Completo" required>
-                <input type="text" name="role" placeholder="Cargo" required>
-                <input type="email" name="email" placeholder="Email Corporativo" required>
-                <input type="text" name="company_name" placeholder="Empresa" required>
-                <input type="text" name="industry" placeholder="Segmento" required>
-                <input type="number" name="employees" placeholder="Número de Funcionários" required>
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" name="name" placeholder="Nome Completo" required>
+                <label for="role">Cargo</label>
+                <input type="text" id="role" name="role" placeholder="Cargo" required>
+                <label for="email">Email Corporativo</label>
+                <input type="email" id="email" name="email" placeholder="Email Corporativo" required>
+                <label for="company_name">Empresa</label>
+                <input type="text" id="company_name" name="company_name" placeholder="Empresa" required>
+                <label for="industry">Segmento</label>
+                <input type="text" id="industry" name="industry" placeholder="Segmento" required>
+                <label for="employees">Número de Funcionários</label>
+                <input type="number" id="employees" name="employees" placeholder="Número de Funcionários" required>
             </div>
             <div class="section business-info">
                 <h3>Informações de Negócio</h3>
                 {% for i, question in enumerate(questions) %}
-                    <div class="question">
-                        <h3>{{ question.question }}</h3>
+                    <fieldset class="question">
+                        <legend>{{ question.question }}</legend>
                         <div class="question-options">
                             {% for option in question.options %}
                                 <label>
@@ -213,21 +226,13 @@
                                 </label>
                             {% endfor %}
                         </div>
-                    </div>
+                    </fieldset>
                 {% endfor %}
-            </div>
             <div class="section opt-in">
                 <label class="opt-in-label">
                     <input type="checkbox" name="opt_in" id="opt_in">
                     <span class="custom-checkbox"></span>
-                    <span>Estou de acordo</span>
-                    <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">Política de Privacidade</a>
+                    <span class="label-text">Eu concordo com os <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">Termos e Condições</a></span>
                 </label>
             </div>
-                    
-                    
-            <button type="submit">Acessar Diagnóstico</button>
-        </form>
-    </div>
-</body>
-</html>
+            <button type="submit">Acessar Diagnóstico
