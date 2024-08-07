@@ -117,12 +117,12 @@
             margin-top: 15px;
             font-size: 16px;
         }
+
         .opt-in-label input[type="checkbox"] {
             display: none;
         }
-        .opt-in-label.checkmark {
-            position: relative;
-            top: 1px;
+
+        .opt-in-label.custom-checkbox {
             margin-right: 10px;
             width: 20px;
             height: 20px;
@@ -130,11 +130,13 @@
             border-radius: 4px;
             background-color: #fff;
         }
-        .opt-in-label input[type="checkbox"]:checked +.checkmark {
+
+        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox {
             background-color: #007BFF;
             border-color: #007BFF;
         }
-        .opt-in-label input[type="checkbox"]:checked +.checkmark::after {
+
+        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox::after {
             content: "";
             position: absolute;
             top: 50%;
@@ -145,11 +147,13 @@
             background-color: #fff;
             border-radius: 2px;
         }
+
         .opt-in-label a {
             color: #5c5c5c;
             text-decoration: none;
             margin-left: 10px;
         }
+
         .opt-in-label a:hover {
             text-decoration: underline;
         }
@@ -215,11 +219,12 @@
             <div class="section opt-in">
                 <label class="opt-in-label">
                     <input type="checkbox" name="opt_in" id="opt_in">
-                    <span class="checkmark"></span>
-                    Estou de acordo com a política de privacidade
+                    <span class="custom-checkbox"></span>
+                    <span>Estou de acordo</span>
                     <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">Política de Privacidade</a>
                 </label>
             </div>
+                    
                     
             <button type="submit">Acessar Diagnóstico</button>
         </form>
