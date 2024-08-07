@@ -35,6 +35,11 @@
             font-size: 18px;
             color: #007BFF;
         }
+        .section label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
         .section input, .section select {
             width: 100%;
             padding: 12px;
@@ -72,9 +77,9 @@
             background-color: #fff;
         }
         .question-options input[type="radio"]:checked {
-          border-color: #007BFF;
-          background-color: #007BFF;
-          box-shadow: 0 0 0 2px #fff;
+            border-color: #007BFF;
+            background-color: #007BFF;
+            box-shadow: 0 0 0 2px #fff;
         }
         button {
             display: block;
@@ -118,11 +123,9 @@
             font-size: 16px;
             cursor: pointer;
         }
-
         .opt-in-label input[type="checkbox"] {
             display: none;
         }
-
         .custom-checkbox {
             margin-right: 10px;
             width: 20px;
@@ -133,12 +136,10 @@
             transition: background-color 0.2s ease;
             position: relative;
         }
-
         .opt-in-label input[type="checkbox"]:checked + .custom-checkbox {
             background-color: #007BFF;
             border-color: #007BFF;
         }
-
         .opt-in-label input[type="checkbox"]:checked + .custom-checkbox::after {
             content: "";
             position: absolute;
@@ -150,17 +151,14 @@
             background-color: #fff;
             border-radius: 2px;
         }
-
         .label-text {
             font-size: 16px;
             color: #333;
         }
-
         .label-text a {
             color: #007BFF;
             text-decoration: none;
         }
-
         .label-text a:hover {
             text-decoration: underline;
         }
@@ -217,8 +215,8 @@
             <div class="section business-info">
                 <h3>Informações de Negócio</h3>
                 {% for i, question in enumerate(questions) %}
-                    <fieldset class="question">
-                        <legend>{{ question.question }}</legend>
+                    <div class="question">
+                        <h3>{{ question.question }}</h3>
                         <div class="question-options">
                             {% for option in question.options %}
                                 <label>
@@ -226,8 +224,9 @@
                                 </label>
                             {% endfor %}
                         </div>
-                    </fieldset>
+                    </div>
                 {% endfor %}
+            </div>
             <div class="section opt-in">
                 <label class="opt-in-label">
                     <input type="checkbox" name="opt_in" id="opt_in">
