@@ -121,15 +121,52 @@
             display: flex;
             align-items: center;
             margin-top: 15px;
+            font-size: 16px;
+            cursor: pointer;
         }
+        
         .opt-in-label input[type="checkbox"] {
-            margin-right: 10px;
+            display: none;
         }
-        .opt-in-label a {
+        
+        .custom-checkbox {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            transition: background-color 0.2s ease;
+        }
+        
+        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox {
+            background-color: #007BFF;
+            border-color: #007BFF;
+        }
+        
+        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+        
+        .label-text {
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .label-text a {
             color: #007BFF;
             text-decoration: none;
         }
-        .opt-in-label a:hover {
+        
+        .label-text a:hover {
             text-decoration: underline;
         }
     </style>
@@ -193,9 +230,10 @@
             </div>
             <div class="section opt-in">
                 <label class="opt-in-label">
-                    <input type="checkbox" name="opt_in"> Eu concordo com a 
-                    <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">Política de Privacidade</a>
-                </label>
+                    <input type="checkbox" name="opt_in" id="opt_in">
+                    <span class="custom-checkbox"></span>
+                    <span class="label-text">Estou de acordo <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">política privacidade</a></span>
+                 </label>
             </div>
             <button type="submit">Acessar Diagnóstico</button>
         </form>
