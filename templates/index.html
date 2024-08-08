@@ -117,6 +117,7 @@
             }
         }
         .opt-in-label {
+            position: relative;
             padding: 10px;
             display: flex;
             align-items: center;
@@ -131,12 +132,12 @@
         }
 
         .opt-in-label.custom-checkbox {
-            margin-right: 10px;
             width: 20px;
             height: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
             background-color: #fff;
+            margin-right: 10px;
         }
 
         .opt-in-label input[type="checkbox"]:checked +.custom-checkbox {
@@ -144,16 +145,14 @@
             border-color: #007BFF;
         }
 
-        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 10px;
-            height: 10px;
-            background-color: #fff;
-            border-radius: 2px;
+        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox::before {
+             content: "\2713";
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             font-size: 16px;
+             color: #fff;
         }
 
         .opt-in-label a {
