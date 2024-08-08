@@ -24,8 +24,14 @@
         h1 {
             text-align: center;
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: #333;
+        }
+        h2 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #666;
         }
         .section {
             margin-bottom: 30px;
@@ -34,11 +40,6 @@
             margin-bottom: 10px;
             font-size: 18px;
             color: #007BFF;
-        }
-        .section label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
         }
         .section input, .section select {
             width: 100%;
@@ -77,9 +78,9 @@
             background-color: #fff;
         }
         .question-options input[type="radio"]:checked {
-            border-color: #007BFF;
-            background-color: #007BFF;
-            box-shadow: 0 0 0 2px #fff;
+          border-color: #007BFF;
+          background-color: #007BFF;
+          box-shadow: 0 0 0 2px #fff;
         }
         button {
             display: block;
@@ -112,55 +113,22 @@
             transition: width 0.3s ease;
         }
         @media (max-width: 600px) {
-        .container {
-            padding: 15px;
+            .container {
+                padding: 15px;
             }
         }
         .opt-in-label {
-            position: relative;
-            padding: 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
             margin-top: 15px;
-            font-size: 16px;
         }
-
         .opt-in-label input[type="checkbox"] {
-            display: none;
-        }
-
-        .opt-in-label.custom-checkbox {
-            width: 20px;
-            height: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #fff;
             margin-right: 10px;
         }
-
-        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox {
-            background-color: #007BFF;
-            border-color: #007BFF;
-        }
-
-        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox::before {
-             content: "\2713";
-             position: absolute;
-             top: 50%;
-             left: 50%;
-             transform: translate(-50%, -50%);
-             font-size: 16px;
-             color: #fff;
-        }
-
         .opt-in-label a {
-            color: #5c5c5c;
+            color: #007BFF;
             text-decoration: none;
-            margin-left: 10px;
         }
-
         .opt-in-label a:hover {
             text-decoration: underline;
         }
@@ -201,18 +169,12 @@
         <form action="/submit" method="post">
             <div class="section personal-info">
                 <h3>Informações Pessoais</h3>
-                <label for="name">Nome Completo</label>
-                <input type="text" id="name" name="name" placeholder="Nome Completo" required>
-                <label for="role">Cargo</label>
-                <input type="text" id="role" name="role" placeholder="Cargo" required>
-                <label for="email">Email Corporativo</label>
-                <input type="email" id="email" name="email" placeholder="Email Corporativo" required>
-                <label for="company_name">Empresa</label>
-                <input type="text" id="company_name" name="company_name" placeholder="Empresa" required>
-                <label for="industry">Segmento</label>
-                <input type="text" id="industry" name="industry" placeholder="Segmento" required>
-                <label for="employees">Número de Funcionários</label>
-                <input type="number" id="employees" name="employees" placeholder="Número de Funcionários" required>
+                <input type="text" name="name" placeholder="Nome Completo" required>
+                <input type="text" name="role" placeholder="Cargo" required>
+                <input type="email" name="email" placeholder="Email Corporativo" required>
+                <input type="text" name="company_name" placeholder="Empresa" required>
+                <input type="text" name="industry" placeholder="Segmento" required>
+                <input type="number" name="employees" placeholder="Número de Funcionários" required>
             </div>
             <div class="section business-info">
                 <h3>Informações de Negócio</h3>
@@ -231,9 +193,8 @@
             </div>
             <div class="section opt-in">
                 <label class="opt-in-label">
-                    <input type="checkbox" name="opt_in" id="opt_in">
-                    <span class="custom-checkbox"></span>
-                    <span class="label-text">Eu concordo com os <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">Termos e Condições</a></span>
+                    <input type="checkbox" name="opt_in"> Eu concordo com a 
+                    <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">Política de Privacidade</a>
                 </label>
             </div>
             <button type="submit">Acessar Diagnóstico</button>
