@@ -54,7 +54,7 @@ To set up the **Marketing Diagnostic App** locally or prepare it for deployment,
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/marketing-diagnostic-app.git
+   git clone https://github.com/cacaprog/marketing-diagnostic-app.git
    cd marketing-diagnostic-app
    ```
 
@@ -498,7 +498,7 @@ Thank you for considering contributing to the **Marketing Diagnostic App**! Your
 2. **Clone the Forked Repository**
 
    ```bash
-   git clone https://github.com/yourusername/marketing-diagnostic-app.git
+   git clone https://github.com/cacaprog/marketing-diagnostic-app.git
    cd marketing-diagnostic-app
    ```
 
@@ -551,7 +551,7 @@ This project is licensed under the [MIT License](LICENSE). You are free to use, 
 
 ## Contact
 
-For any questions or feedback, please contact [your-email@example.com](mailto:your-email@example.com).
+For any questions or feedback, please contact [ccananea@yahoo.com.br](mailto:ccananea@yahoo.com.br).
 
 ---
 
