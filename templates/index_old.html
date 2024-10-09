@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Diagnóstico de Marketing Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 70px auto 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #007BFF;
+        }
+        .section input, .section select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .question {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .question h3 {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .question-options {
+            margin-top: 10px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+        .question-options input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .question-options input[type="radio"]:checked {
+          border-color: #007BFF;
+          background-color: #007BFF;
+          box-shadow: 0 0 0 2px #fff;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .progress-bar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f4f4f4;
+            z-index: 1000;
+        }
+        .progress-bar {
+            height: 20px;
+            width: 0%;
+            background-color: #007BFF;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+        }
+        .opt-in-label {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .opt-in-label input[type="checkbox"] {
+            display: none;
+        }
+
+        .opt-in-label.custom-checkbox {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox {
+            background-color: #007BFF;
+            border-color: #007BFF;
+        }
+
+        .opt-in-label input[type="checkbox"]:checked +.custom-checkbox::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+
+        .opt-in-label a {
+            color: #5c5c5c;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .opt-in-label a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            const progressBar = document.querySelector('.progress-bar');
+            const questions = document.querySelectorAll('.question');
+            const totalQuestions = questions.length;
+            let answeredQuestions = 0;
+
+            function updateProgressBar() {
+                const progress = (answeredQuestions / totalQuestions) * 100;
+                progressBar.style.width = progress + '%';
+            }
+
+            form.addEventListener('change', function (event) {
+                if (event.target.type === 'radio') {
+                    answeredQuestions = Array.from(questions).filter(question => {
+                        return Array.from(question.querySelectorAll('input[type="radio"]')).some(input => input.checked);
+                    }).length;
+                    updateProgressBar();
+                }
+            });
+
+            updateProgressBar();
+        });
+    </script>
+</head>
+<body>
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+    <div class="container">
+        <h1>Diagnóstico de Marketing Digital</h1>
+        <h3>Preencha o formulário abaixo e receba um diagnóstico grátis de marketing digital</h3>
+        <form action="/submit" method="post">
+            <div class="section personal-info">
+                <h3>Informações Pessoais</h3>
+                <input type="text" name="name" placeholder="Nome Completo" required>
+                <input type="text" name="role" placeholder="Cargo" required>
+                <input type="email" name="email" placeholder="Email Corporativo" required>
+                <input type="text" name="company_name" placeholder="Empresa" required>
+                <input type="text" name="industry" placeholder="Segmento" required>
+                <input type="number" name="employees" placeholder="Número de Funcionários" required>
+            </div>
+            <div class="section business-info">
+                <h3>Informações de Negócio</h3>
+                {% for i, question in enumerate(questions) %}
+                    <div class="question">
+                        <h3>{{ question.question }}</h3>
+                        <div class="question-options">
+                            {% for option in question.options %}
+                                <label>
+                                    <input type="radio" name="question_{{ i }}" value="{{ option.score }}" required> {{ option.text }}
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="section opt-in">
+                <label class="opt-in-label">
+                    <input type="checkbox" name="opt_in" id="opt_in">
+                    <span class="custom-checkbox"></span>
+                    <span>Estou de acordo</span>
+                    <a href="https://www.conectivo.com.br/nossa-politica-privacidade/" target="_blank">Política de Privacidade</a>
+                </label>
+            </div>
+                    
+                    
+            <button type="submit">Acessar Diagnóstico</button>
+        </form>
+    </div>
+</body>
+</html>
