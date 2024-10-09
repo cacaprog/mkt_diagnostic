@@ -54,8 +54,8 @@ To set up the **Marketing Diagnostic App** locally or prepare it for deployment,
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/cacaprog/marketing-diagnostic-app.git
-   cd marketing-diagnostic-app
+   git clone https://github.com/cacaprog/mkt_diagnostic.git
+   cd mkt_diagnostic
    ```
 
 2. **Set Up a Virtual Environment**
@@ -498,8 +498,8 @@ Thank you for considering contributing to the **Marketing Diagnostic App**! Your
 2. **Clone the Forked Repository**
 
    ```bash
-   git clone https://github.com/cacaprog/marketing-diagnostic-app.git
-   cd marketing-diagnostic-app
+   git clone https://github.com/cacaprog/mkt_diagnostic.git
+   cd mkt_diagnostic
    ```
 
 3. **Create a New Branch**
